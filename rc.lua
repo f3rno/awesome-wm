@@ -73,7 +73,8 @@ tags = {
 		"Code",
 		"GIMP",
 		"Servers",
-		"IRC"},
+		"IRC",
+		"Terminals"},
 
 	layout = {
 		layouts[10],	-- Chrome [Max]
@@ -82,7 +83,8 @@ tags = {
 		layouts[6],		-- Code [Fair]
 		layouts[1],		-- GIMP [Floating]
 		layouts[6], 	-- Servers [Fair]
-		layouts[2]} 	-- IRC [Tiling]
+		layouts[2], 	-- IRC [Tiling]
+		layouts[2]}		-- Terminals [Tiling]
 }
 
 for s = 1, screen.count() do
@@ -368,10 +370,7 @@ globalkeys = awful.util.table.join(
 
 	-- Show/Hide Wibox
 	awful.key({ modkey }, "b", function () mywibox[mouse.screen].visible = not mywibox[mouse.screen].visible end),
-
-	-- Dropdown terminal
-	awful.key({ modkey }, "z", function () scratch.drop(terminal) end),
-
+	
 	-- Volume control
 	awful.key({ "Control" }, "Up", function () awful.util.spawn("amixer set Master playback 1%+", false ) vicious.force({ volumewidget }) end),
 	awful.key({ "Control" }, "Down", function () awful.util.spawn("amixer set Master playback 1%-", false ) vicious.force({ volumewidget }) end),
@@ -474,6 +473,7 @@ awful.rules.rules = {
 	{ rule = { class = "Skype" }, callback = function (c) awful.client.movetotag(tags[mouse.screen][2], c) end },
 	{ rule = { class = "SpaceFM" }, callback = function (c) awful.client.movetotag(tags[mouse.screen][3], c) end },
 	{ rule = { class = "GIMP" }, callback = function (c) awful.client.movetotag(tags[mouse.screen][5], c) end },
+	{ rule = { name = ".MPD." }, properties = { floating = true } },
 
 	{ rule = { name = ". - Chromium" },
 		properties = { border_width = "0" },
