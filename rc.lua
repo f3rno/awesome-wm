@@ -474,6 +474,7 @@ awful.rules.rules = {
 	{ rule = { class = "SpaceFM" }, callback = function (c) awful.client.movetotag(tags[mouse.screen][3], c) end },
 	{ rule = { class = "GIMP" }, callback = function (c) awful.client.movetotag(tags[mouse.screen][5], c) end },
 	{ rule = { name = ".MPD." }, properties = { floating = true } },
+	{ rule = { class = ".QEMU." }, properties = { floating =true } },
 
 	{ rule = { name = ". - Chromium" },
 		properties = { border_width = "0" },
